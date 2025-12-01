@@ -20,12 +20,8 @@ const io = new Server(server, {
 const activeUsers = new Map()
 
 io.on("connection", (socket) => {
-  console.log(`[Socket.io] Nuevo usuario conectado: ${socket.id}`)
-
-  // Handle user joining
   socket.on("user:join", (userId) => {
     activeUsers.set(userId, socket.id)
-    console.log(`[Socket.io] Usuario ${userId} conectado a Socket.io`)
   })
 
   // Handle sending direct messages
@@ -83,7 +79,6 @@ io.on("connection", (socket) => {
     for (const [userId, socketId] of activeUsers.entries()) {
       if (socketId === socket.id) {
         activeUsers.delete(userId)
-        console.log(`[Socket.io] Usuario ${userId} desconectado`)
         break
       }
     }
@@ -94,6 +89,4 @@ io.on("connection", (socket) => {
 app.set("io", io)
 
 server.listen(PORT, () => {
-  console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`)
-  console.log(`⚡ Socket.io escuchando conexiones`)
 })
