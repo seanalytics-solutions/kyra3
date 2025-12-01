@@ -98,8 +98,6 @@ export default function ProyectosPage() {
         datosParaAPI.miembros = datosFormulario.miembros
       }
 
-      console.log("[v0] Datos enviados al backend:", datosParaAPI)
-
       await createProyecto(datosParaAPI)
       setShowCrearProyecto(false)
       await fetchProyectos()

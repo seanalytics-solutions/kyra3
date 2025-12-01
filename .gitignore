@@ -9,11 +9,6 @@ pnpm-debug.log
 out/
 dist/
 
-# === Backend ===
-backend/node_modules/
-backend/dist/
-backend/.env
-
 # === Environment ===
 .env
 .env.local

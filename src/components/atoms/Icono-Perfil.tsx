@@ -17,14 +17,11 @@ export default function Icono_Perfil({ Imagen, Nombre, color, userId }: IconPerf
   const { openUserMenu } = useUserMenu()
 
   const handleClick = (e: React.MouseEvent) => {
-    console.log("[v0] Icono_Perfil clicked", { userId, Nombre })
     e.preventDefault()
     e.stopPropagation()
     if (userId) {
-      console.log("[v0] Opening user menu for userId:", userId)
       openUserMenu(Number(userId))
     } else {
-      console.log("[v0] No userId provided, cannot open menu")
     }
   }
 

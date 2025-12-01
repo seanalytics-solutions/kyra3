@@ -28,9 +28,7 @@ export default function ChatsRecibidos({
   const [mostrando, setMostrando] = useState<"conversaciones" | "usuarios">("conversaciones")
 
   useEffect(() => {
-    console.log("[v0] Conversaciones recibidas:", conversaciones)
     conversaciones.forEach((conv) => {
-      console.log("[v0] Chat:", conv.participante.nombre, "esGrupo:", conv.esGrupo)
     })
   }, [conversaciones])
 

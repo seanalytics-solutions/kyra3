@@ -111,7 +111,6 @@ export default function UserMenu() {
 
   const handleSendMessage = () => {
     // TODO: Implement send message functionality
-    console.log("Send message to:", selectedUser)
   }
 
   const getInitials = (name?: string) => {

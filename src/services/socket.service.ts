@@ -17,7 +17,6 @@ export const initSocket = (userId: string) => {
   })
 
   socket.on("connect", () => {
-    console.log("[v0] Socket.io conectado")
     socket?.emit("user:join", { userId })
   })
 

@@ -165,9 +165,7 @@ export default function ChatMensajes({
       if (!esGrupo && receptorIdInt) {
         requestBody.receptorId = receptorIdInt
       }
-
-      console.log("[v0] Enviando mensaje:", requestBody)
-
+      
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api"}/mensajes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

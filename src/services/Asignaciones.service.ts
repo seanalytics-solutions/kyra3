@@ -29,7 +29,6 @@ export const getAsignacionesEnviadasByCreador = async (idUsuario: string | numbe
 
     // 1. Guarda el resultado de .json() en una variable
     const data = await response.json()
-    console.log(data)
 
     // 2. Devuelve la variable, diciéndole a TypeScript que confíe en que es del tipo correcto
     return data as ApiAsignacionCreada[]
@@ -227,14 +226,7 @@ export interface ArchivoAdjunto {
 
 export const getArchivosDeAsignacion = async (idAsignacion: number): Promise<ArchivoAdjunto[]> => {
   try {
-    console.log("[v0] Solicitando archivos para asignación:", idAsignacion)
     const response = await fetch(`${API_URL}/asignaciones/${idAsignacion}/archivos`)
-
-    console.log("[v0] Respuesta del servidor:", {
-      status: response.status,
-      statusText: response.statusText,
-      ok: response.ok,
-    })
 
     if (!response.ok) {
       const errorText = await response.text()
@@ -243,7 +235,6 @@ export const getArchivosDeAsignacion = async (idAsignacion: number): Promise<Arc
     }
 
     const data = await response.json()
-    console.log("[v0] Archivos obtenidos:", data.length)
     return data
   } catch (error) {
     console.error("[v0] Error en getArchivosDeAsignacion:", error)

@@ -4,7 +4,8 @@ import type React from "react"
 import { useEffect } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { useUser } from "@/context/userContext"
-import SideBar from "@/components/organisms/SideBar"
+// 1. ELIMINAMOS la importación de la Sidebar aquí
+// import SideBar from "@/components/organisms/SideBar" 
 import Inbox from "@/components/organisms/Inbox"
 import UserMenu from "@/components/organisms/UserMenu"
 import { useInbox } from "@/context/inbox-context"
@@ -18,17 +19,17 @@ export function ProtectedRoute({ children, notifications = [] }: { children: Rea
   const isLoginPage = pathname === "/login"
 
   useEffect(() => {
-    // If on login page and authenticated, redirect to home
+    // Si estás en login y autenticado, ir a Inicio
     if (isLoginPage && isAuthenticated) {
       router.push("/Inicio")
     }
-    // If not on login page and not authenticated after loading, redirect to login
+    // Si NO estás en login y no estás autenticado, ir a login
     if (!isLoginPage && !loading && !isAuthenticated) {
       router.push("/login")
     }
   }, [isAuthenticated, loading, router, isLoginPage])
 
-  // Show loading screen while checking auth
+  // Pantalla de carga
   if (loading) {
     return (
       <div
@@ -50,22 +51,15 @@ export function ProtectedRoute({ children, notifications = [] }: { children: Rea
     return <>{children}</>
   }
 
-  // Only render protected content with sidebar if authenticated
   if (!isAuthenticated) {
     return null
   }
 
   return (
-    <div style={{ display: "flex", width: "100%"}}>
-      <div className="sidebar">
-        <SideBar />
-      </div>
-      <div className="body" style={{ flex: 1, width: "100%", overflow: "hidden"}}>
-        {children}
-        <Inbox initialNotifications={notifications} />
-        <UserMenu />
-      </div>
-    </div>
+    <>
+      {children}
+      <Inbox initialNotifications={notifications} />
+      <UserMenu />
+    </>
   )
 }
-  

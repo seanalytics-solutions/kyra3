@@ -34,10 +34,6 @@ export default function AsignacionesRecibidas({
                 <div
                   onClick={(e) => {
                     e.stopPropagation()
-                    console.log("[v0] Asignacion autor area clicked:", {
-                      autorId: asignacion.autor.id,
-                      autorNombre: asignacion.autor.nombre,
-                    })
                   }}
                   style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}
                 >

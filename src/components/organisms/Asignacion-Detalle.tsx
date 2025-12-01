@@ -81,11 +81,9 @@ export default function AsignacionDetalle({
   useEffect(() => {
     const cargarArchivos = async () => {
       if (asignacion?.id) {
-        console.log("[v0] Cargando archivos para asignación:", asignacion.id)
         setCargandoArchivos(true)
         try {
           const archivos = await getArchivosDeAsignacion(asignacion.id)
-          console.log("[v0] Archivos cargados:", archivos)
           setArchivosAdjuntos(archivos)
         } catch (error) {
           console.error("[v0] Error al cargar archivos:", error)

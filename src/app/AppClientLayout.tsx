@@ -15,7 +15,9 @@ export const AppClientLayout: React.FC<{ children: React.ReactNode }> = ({ child
         <UserProvider>
           <InboxProvider>
             <UserMenuProvider>
-              <NotificationsWrapper>{children}</NotificationsWrapper>
+              <NotificationsWrapper>
+                  {children}
+              </NotificationsWrapper>
             </UserMenuProvider>
           </InboxProvider>
         </UserProvider>
@@ -23,4 +25,4 @@ export const AppClientLayout: React.FC<{ children: React.ReactNode }> = ({ child
       <Analytics />
     </>
   )
-} 
+}

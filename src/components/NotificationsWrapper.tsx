@@ -16,8 +16,6 @@ export const NotificationsWrapper: React.FC<{ children: React.ReactNode }> = ({ 
     }
   }, [usuario])
 
-  console.log()
-
   return <ProtectedRoute notifications={initialNotifications}>{children}</ProtectedRoute>
 }
  

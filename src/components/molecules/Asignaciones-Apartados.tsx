@@ -14,7 +14,6 @@ interface AsigApartadosProps {
 }
  
 export default function AsignacionesApartados({ Estado, NumAsig, Asignacion, onSelectAsignacion }: AsigApartadosProps) {
-  console.log("Asignaciones recibidas:", Asignacion)
   const colores = coloresporEstado[Estado]
 
   return (

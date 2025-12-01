@@ -28,7 +28,6 @@ export default function InvitarMiembro({
     const fetchUsuarios = async () => {
       setLoading(true)
       const data = await getAllUsers()
-      console.log("[v0] All users fetched:", data)
       setTodosLosUsuarios(data)
       setLoading(false)
     }
@@ -45,8 +44,6 @@ export default function InvitarMiembro({
       ((usuario.Nombre_Usuario || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
         (usuario.Correo || "").toLowerCase().includes(searchTerm.toLowerCase())),
   )
-
-  console.log("[v0] Current members:", miembrosActuales, "Filtered users:", usuariosFiltrados)
 
   // 4. La función handleInvitar ahora llama a la API
   const handleInvitar = async () => {

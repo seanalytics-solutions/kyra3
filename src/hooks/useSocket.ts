@@ -46,7 +46,6 @@ export const useSocket = ({
         setIsReady(true)
       } else {
         socketRef.current.on("connect", () => {
-          console.log("[v0] Socket listo para usar")
           setIsReady(true)
         })
       }

@@ -20,8 +20,6 @@ export default function Archivo({ archivoData }: ArchivoProps) {
   const [nombreArchivo, setNombreArchivo] = useState(archivoData?.Nombre_Archivo || "")
   const [nuevoNombre, setNuevoNombre] = useState("")
 
-  console.log("Datos en archvos:", archivoData)
-
   const archivo: ArchivoEquipo = archivoData
     ? {
         ID_Archivo: archivoData.ID_Archivo,

@@ -23,8 +23,6 @@ export function UserMenuProvider({ children }: { children: ReactNode }) {
   const toggleUserMenu = () => setIsOpen((prev) => !prev)
 
   const openUserMenu = async (userIdOrUser?: number | Usuario) => {
-    console.log("[v0] openUserMenu called with:", userIdOrUser)
-
     if (!userIdOrUser) {
       // Open menu for current user
       setSelectedUser(null)
@@ -37,9 +35,7 @@ export function UserMenuProvider({ children }: { children: ReactNode }) {
       setIsLoading(true)
       setIsOpen(true)
       try {
-        console.log("[v0] Fetching user data for ID:", userIdOrUser)
         const userData = await getUserById(userIdOrUser)
-        console.log("[v0] User data fetched:", userData)
         setSelectedUser(userData)
       } catch (error) {
         console.error("[v0] Error fetching user data:", error)

@@ -20,7 +20,6 @@ export default function Inbox({ initialNotifications }: InboxProps) {
 
   useEffect(() => {
     setNotificaciones(initialNotifications)
-    console.log("[v0] Notificaciones actualizadas:", initialNotifications)
   }, [initialNotifications])
 
   // Function to handle marking a notification as read
@@ -51,11 +50,6 @@ export default function Inbox({ initialNotifications }: InboxProps) {
 
   const handleNotificationClick = async (noti: Notificacion) => {
     try {
-      console.log("[v0] Notificación clicked:", noti)
-      console.log("[v0] Tipo_Noti:", noti.Tipo_Noti)
-      console.log("[v0] Detalles:", noti.Detalles)
-
-      // Mark as read if not already
       if (!noti.Visto) {
         await handleMarkAsRead(noti.ID_Notificacion)
       }
@@ -65,7 +59,6 @@ export default function Inbox({ initialNotifications }: InboxProps) {
       const detalles = noti.Detalles || {}
 
       if (tipo.includes("mensaje") || tipo.includes("chat")) {
-        console.log("[v0] Navegando a Chats")
         router.push("/Chats")
       } else if (tipo.includes("asignacion") || tipo.includes("asignación")) {
         // Try to extract assignment ID from various possible fields
@@ -76,22 +69,16 @@ export default function Inbox({ initialNotifications }: InboxProps) {
           detalles.asignacionId ||
           detalles.id
 
-        console.log("[v0] ID de asignación:", asignacionId)
-        console.log("[v0] Campos en detalles:", Object.keys(detalles))
-
-        // Check if it's sent to review or a new assignment
         const message = detalles.message?.toLowerCase() || ""
         const esRevision = message.includes("revisión") || message.includes("revision") || message.includes("review")
 
         if (esRevision) {
-          console.log("[v0] Navegando a Asignados con ID:", asignacionId)
           if (asignacionId) {
             router.push(`/Asignados?id=${asignacionId}`)
           } else {
             router.push("/Asignados")
           }
         } else {
-          console.log("[v0] Navegando a Asignaciones con ID:", asignacionId)
           if (asignacionId) {
             router.push(`/Asignaciones?id=${asignacionId}`)
           } else {
@@ -105,21 +92,17 @@ export default function Inbox({ initialNotifications }: InboxProps) {
           detalles.id_asignacion ||
           detalles.asignacionId ||
           detalles.id
-        console.log("[v0] Navegando a Asignados (revisión) con ID:", asignacionId)
         if (asignacionId) {
           router.push(`/Asignados?id=${asignacionId}`)
         } else {
           router.push("/Asignados")
         }
       } else {
-        // Default: try to use routeTo from Detalles if available
-        console.log("[v0] Usando routeTo o navegación por defecto")
         if (detalles.routeTo) {
           router.push(detalles.routeTo)
         }
       }
 
-      // Close inbox after navigation
       closeInbox()
     } catch (error) {
       console.error("[v0] Error al procesar notificación:", error)
