@@ -16,6 +16,8 @@ import { useUser } from "@/context/userContext"
 import { useRouter } from "next/navigation"
 
 interface DetalleProps {
+  tamaño: number
+  tamaño2: number
   asignacion: AsignacionUI
   historial: HistorialItem[]
   loadingHistorial: boolean
